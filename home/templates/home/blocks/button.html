@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="my-3">
+    {% if self.page %}
+        <a id="to-page" class="btn btn-success" href="{{ self.page.url }}" target="_blank">{{ self.name }}</a>
+    {% endif %}
+
+    {% if self.url %}
+        <a id="to-link" class="btn btn-primary" href="{{ self.url }}" target="_blank">{{ self.name }}</a>
+    {% endif %}
+
+</div>
+

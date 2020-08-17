@@ -1,0 +1,22 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="row">
+
+    {% if self.image %}
+        {% image self.image width-400 as tmp_photo %}
+
+        <div class="col-4 img-holder">
+            <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}"
+                 height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}"
+                 class="img-responsive img-thumbnail"/>
+        </div>
+        <div class="col-8">
+            {{ self.paragraph }}
+        </div>
+    {% else %}
+        <div class="col-12">
+            {{ self.paragraph }}
+        </div>
+    {% endif %}
+
+</div>

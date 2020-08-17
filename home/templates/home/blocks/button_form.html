@@ -1,0 +1,32 @@
+{% include "wagtailadmin/block_forms/struct.html" %}
+
+
+{% block extra_js %}
+    <script type="text/javascript">
+        const usePage = $('#{{ prefix }}-use_page');
+
+        const toPage = $('.page-block').first().parent();
+        const toLink = $('.url-block').first().parent();
+
+        function showHideField() {
+            // update the visibility of field according to the state of
+            // the checkbox
+            if (usePage.is(':checked')) {
+                toPage.show();
+                toLink.hide();
+                toLink.val(null)
+            } else {
+                toPage.hide();
+                toLink.show();
+                toPage.val(null)
+            }
+        }
+
+        // call showHideField immediately to reflect the initial state
+        // of the checkbox
+        showHideField();
+        // trigger showHideField whenever the checkbox state is changed
+        usePage.change(showHideField);
+    </script>
+
+{% endblock %}

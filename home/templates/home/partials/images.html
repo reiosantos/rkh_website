@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for page in page_images %}
+    {% with image=page.image %}
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                {% image image fill-320x240 %}
+
+                <h5 class="card-title">{{ image.title }}</h5>
+                <p class="card-text">{{ image.caption }}</p>
+            </div>
+        </div>
+
+    {% endwith %}
+{% endfor %}

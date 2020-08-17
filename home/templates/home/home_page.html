@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}homepage{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+    <div class="py-2">
+        {{ page.body }}
+    </div>
+
+    <p class="text-left pb-3">
+        <span class="font-weight-bold">Author:</span> <span class="text-info">{{ page.author }}</span>
+    </p>
+
+    {% if page.gallery and page.gallery.all %}
+        <h5 class="text-left text-muted wagtail-icon-horizontalrule">Gallery</h5>
+        <div class="block-gallery">
+            {% include "home/partials/images.html" with page_images=page.gallery.all %}
+        </div>
+    {% endif %}
+{% endblock content %}
